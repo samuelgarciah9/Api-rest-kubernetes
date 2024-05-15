@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-rest-ingress
+spec:
+  rules:
+  - host: api.sgarcia.com  # Dominio personalizado para acceder a la API
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: api-rest-itl-service   # Nombre del servicio que expone la API REST
+            port:
+              number: 5000   # Puerto en el que escucha la API REST
